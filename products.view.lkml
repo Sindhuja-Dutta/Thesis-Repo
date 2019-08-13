@@ -25,6 +25,11 @@ view: products {
     sql: ${TABLE}.product_name ;;
   }
 
+  dimension: is_organic {
+    type: yesno
+    sql: ${product_name} LIKE '%organic%' ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
