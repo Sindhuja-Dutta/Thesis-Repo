@@ -19,7 +19,7 @@ view: order_products__train {
   }
 
   dimension: reordered {
-    type: number
+    type: yesno
     sql: ${TABLE}.reordered ;;
   }
 
