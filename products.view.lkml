@@ -27,7 +27,7 @@ view: products {
 
   dimension: is_organic {
     type: yesno
-    sql: ${product_name} LIKE '%organic%' ;;
+    sql: ${product_name} LIKE '%Organic%' ;;
   }
 
   measure: count {
