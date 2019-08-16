@@ -35,6 +35,10 @@ view: products {
     drill_fields: [detail*]
   }
 
+  #measure: average_products {
+   # type: average
+  #  sql:  ${TABLE}. ;;
+  #}
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
