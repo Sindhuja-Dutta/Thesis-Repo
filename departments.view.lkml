@@ -13,8 +13,25 @@ view: departments {
     sql: ${TABLE}.department ;;
   }
 
+  dimension: food_item_yesno {
+    type: yesno
+    sql: ${department} like 'produce' or
+         ${department} like 'dairy eggs' or
+         ${department} like 'beverages' or
+         ${department} like 'snacks' or
+         ${department} like 'frozen' or
+         ${department} like 'pantry' or
+         ${department} like 'bakery' or
+         ${department} like 'deli' or
+         ${department} like 'canned goods' or
+         ${department} like 'dry goods pasta' or
+         ${department} like 'meat seafood' or
+         ${department} like 'breakfast';;
+  }
+
   measure: count {
     type: count
     drill_fields: [department_id, products.count]
   }
+
 }
