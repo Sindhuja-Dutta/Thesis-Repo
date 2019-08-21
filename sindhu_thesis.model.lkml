@@ -81,3 +81,5 @@ explore: products {
     relationship: many_to_one
   }
 }
+
+explore: each_order_products {}
