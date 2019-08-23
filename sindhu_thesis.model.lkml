@@ -38,6 +38,24 @@ explore: order_products__prior {
     sql_on: ${products.aisle_id} = ${aisles.aisle_id} ;;
     relationship: many_to_one
   }
+
+  join: count_products_each_order {
+    type: left_outer
+    sql_on: ${count_products_each_order.order_id} = ${orders.order_id} ;;
+    relationship: many_to_one
+  }
+
+  join: pdt_test {
+    type: left_outer
+    sql_on: ${pdt_test.user_id} = ${orders.user_id} ;;
+    relationship: many_to_one
+  }
+
+  join: orders_per_user {
+    type: left_outer
+    sql_on: ${orders_per_user.user_id} = ${orders.user_id} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: order_products__train {
@@ -81,5 +99,3 @@ explore: products {
     relationship: many_to_one
   }
 }
-
-explore: each_order_products {}
