@@ -6,9 +6,16 @@ view: orders_per_user {
       }
     }
     dimension: user_id {
+      primary_key: yes
       type: number
     }
     dimension: count {
       type: number
+    }
+
+    measure: average_orders {
+      sql: ${count} ;;
+      type: average
+
     }
   }
