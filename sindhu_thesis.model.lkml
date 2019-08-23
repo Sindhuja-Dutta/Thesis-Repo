@@ -10,10 +10,6 @@ datagroup: sindhu_thesis_default_datagroup {
 
 persist_with: sindhu_thesis_default_datagroup
 
-explore: aisles {}
-
-explore: departments {}
-
 explore: order_products__prior {
   join: products {
     type: left_outer
@@ -71,22 +67,6 @@ explore: order_products__train {
     relationship: many_to_one
   }
 
-  join: departments {
-    type: left_outer
-    sql_on: ${products.department_id} = ${departments.department_id} ;;
-    relationship: many_to_one
-  }
-
-  join: aisles {
-    type: left_outer
-    sql_on: ${products.aisle_id} = ${aisles.aisle_id} ;;
-    relationship: many_to_one
-  }
-}
-
-explore: orders {}
-
-explore: products {
   join: departments {
     type: left_outer
     sql_on: ${products.department_id} = ${departments.department_id} ;;
