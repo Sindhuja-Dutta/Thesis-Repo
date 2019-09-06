@@ -16,8 +16,8 @@ LIMIT 500) ) ;;
     type: number
   }
 
-#   dimension: orders_count {
-#     type: number
-#   }
+  dimension: orders_count {
+     type: number
+   }
 
 }
