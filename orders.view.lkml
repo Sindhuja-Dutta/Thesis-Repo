@@ -38,6 +38,24 @@ view: orders {
     sql: ${TABLE}.user_id ;;
   }
 
+  dimension: visit_time {
+    case: {
+      when: {
+        sql: ${order_hour_of_day} < 6;;
+        label: "Midnight"
+      }
+      when: {
+        sql:  ${order_hour_of_day} < 12;;
+        label: "Morning"
+      }
+      when: {
+        sql: ${order_hour_of_day} < 18;;
+        label: "Noon"
+      }
+      else:"Night"
+    }
+  }
+
   measure: count {
     type: count
     drill_fields: [order_id, order_products__train.count, order_products__prior.count]

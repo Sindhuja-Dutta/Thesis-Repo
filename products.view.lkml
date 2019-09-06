@@ -30,6 +30,15 @@ view: products {
     sql: ${product_name} LIKE '%Organic%' ;;
   }
 
+  dimension: is_asian {
+    type: yesno
+    sql: ${product_name} LIKE '%Asian%' ;;
+  }
+
+  dimension: is_gluten_free {
+    type: yesno
+    sql: ${product_name} LIKE '%Gluten%' ;;
+  }
   measure: count {
     type: count
     drill_fields: [detail*]

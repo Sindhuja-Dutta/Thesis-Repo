@@ -18,4 +18,14 @@ view: orders_per_user {
       type: average
 
     }
+
+    measure: max_orders {
+      sql: ${count} ;;
+      type: max
+    }
+
+    measure: min_orders {
+      sql: ${count} ;;
+      type: min
+    }
   }
