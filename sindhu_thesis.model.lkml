@@ -78,4 +78,10 @@ explore: order_products__train {
     sql_on: ${products.aisle_id} = ${aisles.aisle_id} ;;
     relationship: many_to_one
   }
+
+  join: hour_of_day {
+    type: left_outer
+    sql_on:  1=1 ;;
+    relationship: :many_to_one
+  }
 }
