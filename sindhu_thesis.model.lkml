@@ -79,7 +79,7 @@ explore: order_products__train {
     relationship: many_to_one
   }
 
-  join: hour_of_day {
+  join: max_hour_of_day {
     type: left_outer
     sql_on:  1=1 ;;
     relationship: :many_to_one
