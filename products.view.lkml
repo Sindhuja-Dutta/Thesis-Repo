@@ -52,8 +52,8 @@ view: products {
     }
     }
 
-  measure: ratio_of_organic {
-    sql: ${count_of_organic}/${count} ;;
+  measure: percent_of_organic {
+    sql: (${count_of_organic}/${count})*100 ;;
 
   }
 
