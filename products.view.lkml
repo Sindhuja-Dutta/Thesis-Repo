@@ -44,6 +44,14 @@ view: products {
     drill_fields: [detail*]
   }
 
+  measure: ratio_of_organic{
+    type: count
+    filters: {
+      field: is_organic
+      value: "yes"
+    }
+    }
+
   #measure: average_products {
    # type: average
   #  sql:  ${TABLE}. ;;
