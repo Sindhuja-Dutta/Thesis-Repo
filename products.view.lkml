@@ -57,6 +57,19 @@ view: products {
 
   }
 
+  measure: count_of_asian_food{
+    type: count
+    filters: {
+      field: is_asian
+      value: "yes"
+    }
+  }
+
+  measure: percent_of_asian_food {
+    sql: (${count_of_asian_food}/${count})*100 ;;
+
+  }
+
   #measure: average_products {
    # type: average
   #  sql:  ${TABLE}. ;;
