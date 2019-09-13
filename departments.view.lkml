@@ -29,6 +29,12 @@ view: departments {
          ${department} like 'breakfast';;
   }
 
+measure: percent_of_total_food_items {
+  type: sum
+  sql: ${food_item_yesno} when ${food_item_yesno}="yes" ;;
+
+}
+
   measure: count {
     type: count
     drill_fields: [department_id, products.count]
