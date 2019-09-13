@@ -58,6 +58,12 @@ explore: order_products__prior {
     sql_on:  1=1 ;;
     relationship: :many_to_one
   }
+
+  join: ordered_only_once {
+    type:left_outer
+    sql_on: ${orders.user_id} = ${ordered_only_once.orders_user_id} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: order_products__train {
@@ -84,4 +90,6 @@ explore: order_products__train {
     sql_on: ${products.aisle_id} = ${aisles.aisle_id} ;;
     relationship: many_to_one
   }
+
+
 }
