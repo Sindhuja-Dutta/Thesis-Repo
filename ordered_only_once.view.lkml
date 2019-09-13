@@ -36,6 +36,11 @@ view: ordered_only_once {
     sql: ${TABLE}.products_count ;;
   }
 
+measure: count_of_users_ordered_product_once {
+  type: count_distinct
+  sql: ${orders_user_id} ;;
+}
+
   set: detail {
     fields: [orders_user_id, products_product_id, products_count]
   }
