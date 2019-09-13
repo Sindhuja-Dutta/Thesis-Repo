@@ -29,10 +29,12 @@ view: departments {
          ${department} like 'breakfast';;
   }
 
-measure: percent_of_total_food_items {
-  type: sum
-  sql: ${food_item_yesno} when ${food_item_yesno}="yes" ;;
-
+measure: count_of_total_food_items {
+  type: count
+  filters:{
+  field: food_item_yesno
+  value: "yes"
+  }
 }
 
   measure: count {
