@@ -2,13 +2,12 @@ view: ordered_only_once {
   derived_table: {
     sql: SELECT
         orders.user_id  AS orders_user_id,
-        products.product_id  AS products_product_id,
-        COUNT(DISTINCT products.product_id ) AS products_count
+      COUNT(DISTINCT products.product_id ) AS products_count
       FROM instacart_market_basket_analysis.order_products__prior  AS order_products__prior
       LEFT JOIN instacart_market_basket_analysis.products  AS products ON order_products__prior.product_id = products.product_id
       LEFT JOIN instacart_market_basket_analysis.orders  AS orders ON order_products__prior.order_id = orders.order_id
 
-      GROUP BY 1,2
+      GROUP BY 1
       HAVING
         (COUNT(DISTINCT products.product_id ) = 1)
       ORDER BY 1
