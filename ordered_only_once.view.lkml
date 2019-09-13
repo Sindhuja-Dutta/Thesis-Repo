@@ -12,8 +12,8 @@ view: ordered_only_once {
       HAVING
         (COUNT(DISTINCT products.product_id ) = 1)
       ORDER BY 1
-      LIMIT 500
        ;;
+      persist_for: "24 hour"
   }
 
   measure: count {
