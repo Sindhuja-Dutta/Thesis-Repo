@@ -54,7 +54,6 @@ view: products {
 
   measure: percent_of_organic {
     sql: (${count_of_organic}/${count})*100 ;;
-
   }
 
   measure: count_of_asian_food{
