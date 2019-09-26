@@ -75,35 +75,3 @@ explore: order_products__prior {
     relationship: many_to_one
   }
 }
-
-explore: order_products__train {
-  view_label: "Prior Orders-Training Set"
-  join: products {
-    type: left_outer
-    sql_on: ${order_products__train.product_id} = ${products.product_id} ;;
-    relationship: many_to_one
-  }
-
-  join: orders {
-    view_label: "Order Details"
-    type: left_outer
-    sql_on: ${order_products__train.order_id} = ${orders.order_id} ;;
-    relationship: many_to_one
-  }
-
-  join: departments {
-    view_label: "Department Details"
-    type: left_outer
-    sql_on: ${products.department_id} = ${departments.department_id} ;;
-    relationship: many_to_one
-  }
-
-  join: aisles {
-    view_label: "Aisle Details"
-    type: left_outer
-    sql_on: ${products.aisle_id} = ${aisles.aisle_id} ;;
-    relationship: many_to_one
-  }
-
-
-}

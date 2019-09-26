@@ -1,3 +1,5 @@
+# NOT USED
+
 view: order_products__train {
   sql_table_name: instacart_market_basket_analysis.order_products__train ;;
 
