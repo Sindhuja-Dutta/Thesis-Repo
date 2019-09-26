@@ -11,7 +11,7 @@ datagroup: sindhu_thesis_default_datagroup {
 persist_with: sindhu_thesis_default_datagroup
 
 explore: order_products__prior {
-  label: "Prior Orders - Test Group"
+  label: "Order Products"
   join: products {
     view_label: "Product Details"
     type: left_outer
@@ -20,7 +20,7 @@ explore: order_products__prior {
   }
 
   join: orders {
-    view_label: "Order Details"
+    view_label: "Orders"
     type: left_outer
     sql_on: ${order_products__prior.order_id} = ${orders.order_id} ;;
     relationship: many_to_one

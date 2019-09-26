@@ -20,9 +20,45 @@ view: orders {
   }
 
   dimension: order_dow {
-    label: "Day of Week"
+    label: "Day of Week Num"
     type: number
     sql: ${TABLE}.order_dow ;;
+  }
+
+  dimension:  order_dow_name{
+    label: "Day of Week Name"
+    type: string
+    case: {
+      when: {
+        sql: ${order_dow} = 0 ;;
+        label: "Saturday"
+      }
+      when: {
+        sql: ${order_dow} = 1 ;;
+        label: "Sunday"
+      }
+      when: {
+        sql: ${order_dow} = 2 ;;
+        label: "Monday"
+      }
+      when: {
+        sql: ${order_dow} = 3 ;;
+        label: "Tuesday"
+      }
+      when: {
+        sql: ${order_dow} = 4 ;;
+        label: "Wednesday"
+      }
+      when: {
+        sql: ${order_dow} = 5 ;;
+        label: "Thursday"
+      }
+      when: {
+        sql: ${order_dow} = 6 ;;
+        label: "Friday"
+      }
+      else: "unknown"
+    }
   }
 
   dimension: order_hour_of_day {
@@ -194,6 +230,12 @@ measure: count_of_first_test {
     }
   }
 
+ measure: count_of_users {
+  type: count_distinct
+   label: "Count of Users"
+  sql: ${user_id} ;;
+  drill_fields: [user_id, order_products__train.count, order_products__prior.count]
+ }
 
   measure: count {
     type: count
