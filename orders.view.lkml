@@ -20,9 +20,45 @@ view: orders {
   }
 
   dimension: order_dow {
-    label: "Day of Week"
+    label: "Day of Week Num"
     type: number
     sql: ${TABLE}.order_dow ;;
+  }
+
+  dimension:  order_dow_name{
+    label: "Day of Week Name"
+    type: string
+    case: {
+      when: {
+        sql: ${order_dow} = 0 ;;
+        label: "Saturday"
+      }
+      when: {
+        sql: ${order_dow} = 1 ;;
+        label: "Sunday"
+      }
+      when: {
+        sql: ${order_dow} = 2 ;;
+        label: "Monday"
+      }
+      when: {
+        sql: ${order_dow} = 3 ;;
+        label: "Tuesday"
+      }
+      when: {
+        sql: ${order_dow} = 4 ;;
+        label: "Wednesday"
+      }
+      when: {
+        sql: ${order_dow} = 5 ;;
+        label: "Thursday"
+      }
+      when: {
+        sql: ${order_dow} = 6 ;;
+        label: "Friday"
+      }
+      else: "unknown"
+    }
   }
 
   dimension: order_hour_of_day {
