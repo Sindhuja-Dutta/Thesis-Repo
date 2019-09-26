@@ -21,7 +21,7 @@ view: order_products__prior {
 
   dimension: reordered {
     label: "Item reordered or not?"
-    type: number
+    type: yesno
     sql: ${TABLE}.reordered ;;
   }
 
