@@ -89,6 +89,12 @@ measure: count_of_first_test {
     }
   }
 
+ measure: count_of_users {
+  type: count_distinct
+   label: "Count of Users"
+  sql: ${user_id} ;;
+  drill_fields: [user_id, order_products__train.count, order_products__prior.count]
+ }
 
   measure: count {
     type: count
