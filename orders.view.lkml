@@ -9,6 +9,7 @@ view: orders {
   }
 
   dimension: days_since_prior_order {
+    label: "Number of days since prior order"
     type: number
     sql: ${TABLE}.days_since_prior_order ;;
   }
@@ -19,16 +20,19 @@ view: orders {
   }
 
   dimension: order_dow {
+    label: "Day of Week"
     type: number
     sql: ${TABLE}.order_dow ;;
   }
 
   dimension: order_hour_of_day {
+    label: "Hour of Day"
     type: number
     sql: ${TABLE}.order_hour_of_day ;;
   }
 
   dimension: order_number {
+    label: "Order number for each user"
     type: number
     sql: ${TABLE}.order_number ;;
   }
@@ -39,6 +43,7 @@ view: orders {
   }
 
   dimension: visit_time {
+    label: "Time of visit during day"
     case: {
       when: {
         sql: ${order_hour_of_day} < 6;;
@@ -55,7 +60,9 @@ view: orders {
       else:"Night"
     }
   }
+
 measure: count_of_first_test {
+  label: "Count of First Time Orders"
   type: count_distinct
   sql: ${order_id} ;;
   filters: {
@@ -69,6 +76,7 @@ measure: count_of_first_test {
 }
 
   measure: count_of_reordered {
+    label: "Count of orders after First Time"
     type: count_distinct
     sql: ${order_id} ;;
     filters: {

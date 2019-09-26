@@ -17,10 +17,12 @@ derived_table: {
 }
 
   dimension: hour_of_day {
+    label: "Hour of Day"
     type: number
   }
 
   dimension: orders_count {
+    label: "Count of Orders"
      type: number
    }
 

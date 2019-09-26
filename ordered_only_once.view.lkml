@@ -21,21 +21,25 @@ view: ordered_only_once {
   }
 
   dimension: orders_user_id {
+    label: "User ID"
     type: number
     sql: ${TABLE}.orders_user_id ;;
   }
 
   dimension: products_product_id {
+    label: "Product ID"
     type: number
     sql: ${TABLE}.products_product_id ;;
   }
 
   dimension: products_count {
+    label: "Count of Products"
     type: number
     sql: ${TABLE}.products_count ;;
   }
 
 measure: count_of_users_ordered_product_once {
+  label: "Count of users who ordered product once"
   type: count_distinct
   sql: ${orders_user_id} ;;
 }

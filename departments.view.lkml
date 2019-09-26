@@ -9,11 +9,13 @@ view: departments {
   }
 
   dimension: department {
+    label: "Department Name"
     type: string
     sql: ${TABLE}.department ;;
   }
 
   dimension: food_item_yesno {
+    label: "Is it a food item?"
     type: yesno
     sql: ${department} like 'produce' or
          ${department} like 'dairy eggs' or
@@ -30,6 +32,7 @@ view: departments {
   }
 
 measure: count_of_total_food_items {
+  label: "Count of Total Food Items"
   type: count
   filters:{
   field: food_item_yesno

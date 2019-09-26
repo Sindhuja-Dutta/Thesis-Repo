@@ -13,6 +13,7 @@ view: count_products_each_order {
     }
 
   dimension: order_quantity_tier {
+    label: "Quantity of Products"
   case: {
     when: {
       sql: ${count_products} <= 5;;

@@ -2,6 +2,7 @@ view: order_products__prior {
   sql_table_name: instacart_market_basket_analysis.order_products__prior ;;
 
   dimension: add_to_cart_order {
+    label: "Order in which item was added to cart"
     type: number
     sql: ${TABLE}.add_to_cart_order ;;
   }
@@ -19,6 +20,7 @@ view: order_products__prior {
   }
 
   dimension: reordered {
+    label: "Item reordered or not?"
     type: number
     sql: ${TABLE}.reordered ;;
   }
