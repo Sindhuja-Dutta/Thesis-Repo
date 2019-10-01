@@ -14,17 +14,20 @@ view: orders_per_user {
     }
 
     measure: average_orders {
+      drill_fields: [user_id,count]
       sql: ${count} ;;
       type: average
 
     }
 
     measure: max_orders {
+      drill_fields: [user_id,count]
       sql: ${count} ;;
       type: max
     }
 
     measure: min_orders {
+      drill_fields: [user_id,count]
       sql: ${count} ;;
       type: min
     }

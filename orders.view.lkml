@@ -205,11 +205,8 @@ view: orders {
 measure: count_of_first_test {
   label: "Count of First Time Orders"
   type: count_distinct
+  drill_fields: [order_id, order_products__train.count, order_products__prior.count]
   sql: ${order_id} ;;
-  filters: {
-    field: products.product_name
-    value: "Banana"
-  }
   filters: {
     field: order_number
     value: "1"
@@ -219,11 +216,8 @@ measure: count_of_first_test {
   measure: count_of_reordered {
     label: "Count of orders after First Time"
     type: count_distinct
+    drill_fields: [order_id, order_products__train.count, order_products__prior.count]
     sql: ${order_id} ;;
-    filters: {
-      field: products.product_name
-      value: "Banana"
-    }
     filters: {
       field: order_number
       value: "-1"

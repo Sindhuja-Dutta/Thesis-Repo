@@ -40,6 +40,7 @@ view: ordered_only_once {
 
 measure: count_of_users_ordered_product_once {
   label: "Count of users who ordered product once"
+  drill_fields: [detail*]
   type: count_distinct
   sql: ${orders_user_id} ;;
 }

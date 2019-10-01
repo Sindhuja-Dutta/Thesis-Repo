@@ -46,6 +46,7 @@ view: products {
 
   measure: count_of_organic{
     type: count
+    drill_fields: [detail*]
     filters: {
       field: is_organic
       value: "yes"
@@ -53,11 +54,13 @@ view: products {
     }
 
   measure: percent_of_organic {
+    drill_fields: [detail*]
     sql: (${count_of_organic}/${count})*100 ;;
   }
 
   measure: count_of_asian_food{
     type: count
+    drill_fields: [detail*]
     filters: {
       field: is_asian
       value: "yes"
@@ -65,6 +68,7 @@ view: products {
   }
 
   measure: percent_of_asian_food {
+    drill_fields: [detail*]
     sql: (${count_of_asian_food}/${count})*100 ;;
 
   }

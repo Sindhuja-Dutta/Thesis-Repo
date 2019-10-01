@@ -34,6 +34,7 @@ view: departments {
 measure: count_of_total_food_items {
   label: "Count of Total Food Items"
   type: count
+  drill_fields: [department_id, products.count]
   filters:{
   field: food_item_yesno
   value: "yes"
