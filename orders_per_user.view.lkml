@@ -13,6 +13,25 @@ view: orders_per_user {
       type: number
     }
 
+  dimension: order_quantity_tier {
+    label: "Quantity of Orders"
+    case: {
+      when: {
+        sql: ${count} <= 5;;
+        label: "Less than 5"
+      }
+      when: {
+        sql:  ${count} > 5 AND ${count} <= 15;;
+        label: "Less than 15"
+      }
+      when: {
+        sql: ${count} > 15;;
+        label: "More than 15"
+      }
+      else:"Unknown"
+    }
+  }
+
     measure: average_orders {
       drill_fields: [user_id,count]
       sql: ${count} ;;

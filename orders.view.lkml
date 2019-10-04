@@ -5,7 +5,8 @@ view: orders {
   dimension: order_id {
     primary_key: yes
     type: number
-    sql: ${TABLE}.order_id ;;
+    sql: ${TABLE}.order_id;;
+
   }
 
   dimension: days_since_prior_order {
@@ -229,9 +230,11 @@ measure: count_of_first_test {
    label: "Count of Users"
   sql: ${user_id} ;;
   drill_fields: [user_id, order_products__train.count, order_products__prior.count]
+  link: { label: "Drill Dashboard" url: "/dashboards/433?Count of Orders={{ value }}" }
  }
 
   measure: count {
+    link: { label: "Drill Dashboard" url: "/dashboards/431?Product Count={{ value }}" }
     type: count
     drill_fields: [order_id, order_products__train.count, order_products__prior.count]
   }

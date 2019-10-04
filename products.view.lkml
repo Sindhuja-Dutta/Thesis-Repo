@@ -39,9 +39,11 @@ view: products {
     type: yesno
     sql: ${product_name} LIKE '%Gluten%' ;;
   }
+
   measure: count {
     type: count
     drill_fields: [detail*]
+    link: { label: "Drill Dashboard" url: "/dashboards/431?Product Count={{ value }}" }
   }
 
   measure: count_of_organic{
@@ -54,6 +56,7 @@ view: products {
     }
 
   measure: percent_of_organic {
+    type: number
     drill_fields: [detail*]
     sql: (${count_of_organic}/${count})*100 ;;
   }
@@ -68,6 +71,7 @@ view: products {
   }
 
   measure: percent_of_asian_food {
+    type: number
     drill_fields: [detail*]
     sql: (${count_of_asian_food}/${count})*100 ;;
 
