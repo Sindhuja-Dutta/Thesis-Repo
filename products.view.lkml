@@ -58,7 +58,8 @@ view: products {
   measure: percent_of_organic {
     type: number
     drill_fields: [detail*]
-    sql: (${count_of_organic}/${count})*100 ;;
+    sql: (${count_of_organic}/${count}) ;;
+    value_format_name: "percent_1"
   }
 
   measure: count_of_asian_food{
