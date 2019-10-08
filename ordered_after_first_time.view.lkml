@@ -1,6 +1,6 @@
-view: ordered_only_once {
+view: ordered_after_first_time {
   derived_table: {
-    sql: SELECT
+sql:SELECT
   orders.user_id  AS orders_user_id,
   products.product_name  AS products_product_name,
   COUNT(DISTINCT orders.order_id) AS orders_count
@@ -10,37 +10,36 @@ LEFT JOIN instacart_market_basket_analysis.orders  AS orders ON order_products__
 
 GROUP BY 1,2
 HAVING
-  (COUNT(DISTINCT orders.order_id) = 1)
+  (COUNT(DISTINCT orders.order_id) >= 2)
 ORDER BY 1;;
-      persist_for: "24 hour"
-  }
+}
 
-  dimension: orders_user_id {
+  dimension: orders_user_id_reorder {
     label: "User ID"
     type: number
     sql: ${TABLE}.orders_user_id ;;
   }
 
-  dimension: products_product_name {
+  dimension: products_product_name_reorder {
     label: "Product Name"
     type: string
     sql: ${TABLE}.products_product_name ;;
   }
 
-  dimension: orders_count {
+  dimension: orders_count_reorder {
     label: "Count of Orders"
     type: number
     sql: ${TABLE}.orders_count ;;
   }
 
-measure: count_of_users_ordered_product_once {
-  label: "Count of users who ordered product once"
-  drill_fields: [detail*]
-  type: count_distinct
-  sql: ${orders_user_id} ;;
-}
+  measure: count_of_users_ordered_product_after_first_time {
+    label: "Count of users who ordered product after first time"
+    drill_fields: [detail*]
+    type: count_distinct
+    sql: ${orders_user_id_reorder} ;;
+  }
 
   set: detail {
-    fields: [orders_user_id, products_product_name, orders_count]
+    fields: [orders_user_id_reorder, products_product_name_reorder, orders_count_reorder]
   }
 }

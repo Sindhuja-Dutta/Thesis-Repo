@@ -203,38 +203,16 @@ view: orders {
     }
   }
 
-measure: count_of_first_test {
-  label: "Count of First Time Orders"
-  type: count_distinct
-  drill_fields: [order_id, order_products__train.count, order_products__prior.count]
-  sql: ${order_id} ;;
-  filters: {
-    field: order_number
-    value: "1"
-  }
-}
-
-  measure: count_of_reordered {
-    label: "Count of orders after First Time"
-    type: count_distinct
-    drill_fields: [order_id, order_products__train.count, order_products__prior.count]
-    sql: ${order_id} ;;
-    filters: {
-      field: order_number
-      value: "-1"
-    }
-  }
-
  measure: count_of_users {
   type: count_distinct
    label: "Count of Users"
   sql: ${user_id} ;;
   drill_fields: [user_id, order_products__train.count, order_products__prior.count]
-  link: { label: "Drill Dashboard" url: "/dashboards/433?Count of Orders={{ value }}" }
+  link: { label: "Drill Dashboard" url: "/dashboards/427?Count of Orders={{ value }}" }
  }
 
   measure: count {
-    link: { label: "Drill Dashboard" url: "/dashboards/431?Product Count={{ value }}" }
+    link: { label: "Drill Dashboard" url: "/dashboards/433?Product Count={{ value }}" }
     type: count
     drill_fields: [order_id, order_products__train.count, order_products__prior.count]
   }

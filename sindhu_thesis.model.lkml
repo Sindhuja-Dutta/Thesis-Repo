@@ -74,4 +74,13 @@ explore: order_products__prior {
     sql_on: ${orders.user_id} = ${ordered_only_once.orders_user_id} ;;
     relationship: many_to_one
   }
+
+  join: ordered_after_first_time {
+    view_label: "Users who Ordered after First Time"
+    type:left_outer
+    sql_on: ${orders.user_id} = ${ordered_after_first_time.orders_user_id_reorder} ;;
+    relationship: many_to_one
+  }
+
+
 }
