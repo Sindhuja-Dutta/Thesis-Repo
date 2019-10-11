@@ -28,7 +28,8 @@ view: departments {
          ${department} like 'canned goods' or
          ${department} like 'dry goods pasta' or
          ${department} like 'meat seafood' or
-         ${department} like 'breakfast';;
+         ${department} like 'breakfast' or
+         ${department} like 'international';;
   }
 
 measure: count_of_total_food_items {

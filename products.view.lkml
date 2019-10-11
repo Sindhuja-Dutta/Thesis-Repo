@@ -75,6 +75,7 @@ view: products {
     type: number
     drill_fields: [detail*]
     sql: (${count_of_asian_food}/${count})*100 ;;
+    value_format: "0.00\%"
 
   }
 

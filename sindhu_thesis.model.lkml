@@ -47,12 +47,6 @@ explore: order_products__prior {
     relationship: many_to_one
   }
 
-  join: pdt_test {
-    view_label: "Test"
-    type: left_outer
-    sql_on: ${pdt_test.user_id} = ${orders.user_id} ;;
-    relationship: many_to_one
-  }
 
   join: orders_per_user {
     view_label: "Orders Per User"
@@ -68,19 +62,13 @@ explore: order_products__prior {
     relationship: :many_to_one
   }
 
-  join: ordered_only_once {
-    view_label: "Users who Ordered only Once"
+  join: order_probability {
+    view_label: "Order Probability"
     type:left_outer
-    sql_on: ${orders.user_id} = ${ordered_only_once.orders_user_id} ;;
+    sql_on: ${orders.user_id} = ${order_probability.orders_user_id} ;;
     relationship: many_to_one
   }
 
-  join: ordered_after_first_time {
-    view_label: "Users who Ordered after First Time"
-    type:left_outer
-    sql_on: ${orders.user_id} = ${ordered_after_first_time.orders_user_id_reorder} ;;
-    relationship: many_to_one
-  }
 
 
 }
