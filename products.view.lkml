@@ -42,8 +42,7 @@ view: products {
 
   measure: count {
     type: count
-    drill_fields: [detail*]
-    link: { label: "Drill Dashboard" url: "/dashboards/431?Product Count={{ value }}" }
+    link: { label: "Go to Product Details Dashboard" url: "/dashboards/431" }
   }
 
   measure: count_of_organic{

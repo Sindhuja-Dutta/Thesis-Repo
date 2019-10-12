@@ -207,12 +207,10 @@ view: orders {
   type: count_distinct
    label: "Count of Users"
   sql: ${user_id} ;;
-  drill_fields: [user_id, order_products__train.count, order_products__prior.count]
-  link: { label: "Drill Dashboard" url: "/dashboards/427?Count of Orders={{ value }}" }
+  link: { label: "Go to User Details Dashboard" url: "/dashboards/427" }
  }
 
   measure: count {
-    link: { label: "Drill Dashboard" url: "/dashboards/433?Product Count={{ value }}" }
     type: count
     drill_fields: [order_id, order_products__train.count, order_products__prior.count]
   }
