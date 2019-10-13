@@ -212,6 +212,5 @@ view: orders {
 
   measure: count {
     type: count
-    drill_fields: [order_id, order_products__train.count, order_products__prior.count]
   }
 }

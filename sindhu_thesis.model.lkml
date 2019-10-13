@@ -62,13 +62,5 @@ explore: order_products__prior {
     relationship: :many_to_one
   }
 
-  join: order_probability {
-    view_label: "Order Probability"
-    type:left_outer
-    sql_on: ${orders.user_id} = ${order_probability.orders_user_id} ;;
-    relationship: many_to_one
-  }
-
-
 
 }

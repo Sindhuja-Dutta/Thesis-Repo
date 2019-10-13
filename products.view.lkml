@@ -1,6 +1,6 @@
 view: products {
   sql_table_name: instacart_market_basket_analysis.products ;;
-  drill_fields: [product_id]
+  drill_fields: [detail*]
 
   dimension: product_id {
     primary_key: yes
@@ -85,12 +85,9 @@ view: products {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-      product_id,
       product_name,
-      departments.department_id,
-      aisles.aisle_id,
-      order_products__train.count,
-      order_products__prior.count
+      orders.count,
+
     ]
   }
 }
