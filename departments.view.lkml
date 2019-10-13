@@ -11,6 +11,10 @@ view: departments {
   dimension: department {
     label: "Department Name"
     type: string
+    link: {
+      label: "Drill by Department Name"
+      url:"/explore/sindhu_thesis/order_products__prior?fields=department.department,orders.count&f[department.department]={{ value | url_encode }}"
+    }
     sql: ${TABLE}.department ;;
   }
 
@@ -35,7 +39,7 @@ view: departments {
 measure: count_of_total_food_items {
   label: "Count of Total Food Items"
   type: count
-  drill_fields: [department, products.count]
+  drill_fields: [details*]
   filters:{
   field: food_item_yesno
   value: "yes"
@@ -44,7 +48,10 @@ measure: count_of_total_food_items {
 
   measure: count {
     type: count
-    drill_fields: [department, products.count]
+    drill_fields: [details*]
+  }
+  set: details {
+    fields: [department]
   }
 
 }

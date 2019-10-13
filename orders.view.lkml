@@ -1,6 +1,5 @@
 view: orders {
   sql_table_name: instacart_market_basket_analysis.orders ;;
-  drill_fields: [order_id]
 
   dimension: order_id {
     primary_key: yes
@@ -24,11 +23,16 @@ view: orders {
     label: "Day of Week Num"
     type: number
     sql: ${TABLE}.order_dow ;;
+
   }
 
   dimension:  order_dow_name{
     label: "Day of Week Name"
     type: string
+    link: {
+      label: "Drill by Day of Week"
+      url:"/explore/sindhu_thesis/order_products__prior?fields=orders.order_dow_name,orders.count&f[orders.order_dow_name]={{ value | url_encode }}"
+    }
     case: {
       when: {
         sql: ${order_dow} = 0 ;;
@@ -66,12 +70,18 @@ view: orders {
     label: "Hour of Day 24 Hour Clock"
     type: number
     sql: ${TABLE}.order_hour_of_day ;;
+
+
   }
 
   # Used a harcoded LookML case statement to get the auto sorting
   dimension: order_hour_of_day_12_hour_format {
     label: "Hour of Day 12 Hour Clock"
     type: string
+    link: {
+      label: "Drill by Hour of Day"
+      url:"/explore/sindhu_thesis/order_products__prior?fields=orders.order_hour_of_day_12_hour_format,orders.count&f[orders.order_hour_of_day_12_hour_format]={{ value | url_encode }}"
+    }
     case: {
       when: {
         label: "12 AM"
@@ -186,6 +196,10 @@ view: orders {
 
   dimension: visit_time {
     label: "Time of visit during day"
+    link: {
+      label: " Drill by Time of visit"
+      url:"/explore/sindhu_thesis/order_products__prior?fields=orders.visit_time,orders.count&f[orders.visit_time]={{ value | url_encode }}"
+    }
     case: {
       when: {
         sql: ${order_hour_of_day} < 6;;
@@ -213,4 +227,6 @@ view: orders {
   measure: count {
     type: count
   }
+
+
 }

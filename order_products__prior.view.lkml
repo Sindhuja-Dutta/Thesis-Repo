@@ -23,10 +23,11 @@ view: order_products__prior {
     label: "Item reordered or not?"
     type: yesno
     sql: ${TABLE}.reordered=1;;
-    drill_fields: [products.product_name,orders.count ]
+
   }
 
   measure: count {
     type: count
+    drill_fields: [products.product_name,orders.count ]
   }
 }
